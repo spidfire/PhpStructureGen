@@ -9,6 +9,11 @@
             "email": "clientapigen@djur.re"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "PhpStructureGenerator\\": "src/"
+        }
+    },
     "require": {
         "nette/php-generator": "^3.2",
         "symfony/yaml": "^4.3"

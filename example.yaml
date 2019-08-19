@@ -1,5 +1,5 @@
-target: example/
-namespace: Example\DataStructure
+target: src/Example/
+namespace: PhpStructureGenerator\Example
 structures:
   clientapi:
     fields:
@@ -7,6 +7,13 @@ structures:
         type: string
       - name: namespace
         type: string
+      - name: middleware
+        type: array
+        value_type: string
+      - name: settings
+        type: map
+        key_type: string
+        value_type: string
       - name: structures
         type: map
         key_type: string
@@ -23,10 +30,13 @@ structures:
       - name: name
         type: string
       - name: key
-        type: ?string
+        type: string
+        optional: true
       - name: type
         type: string
       - name: key_type
-        type: ?string
+        type: string
+        optional: true
       - name: value_type
-        type: ?string
+        type: string
+        optional: true
