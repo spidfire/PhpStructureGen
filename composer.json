@@ -1,0 +1,16 @@
+{
+    "name": "spidfire/clientapigen",
+    "description": "This is a simple tool to generate strict API wrappers",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Djurre",
+            "email": "clientapigen@djur.re"
+        }
+    ],
+    "require": {
+        "nette/php-generator": "^3.2",
+        "symfony/yaml": "^4.3"
+    }
+}

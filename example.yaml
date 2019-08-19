@@ -1,0 +1,32 @@
+target: example/
+namespace: Example\DataStructure
+structures:
+  clientapi:
+    fields:
+      - name: target
+        type: string
+      - name: namespace
+        type: string
+      - name: structures
+        type: map
+        key_type: string
+        value_type: structure
+
+  structure:
+    fields:
+      - name: fields
+        type: array
+        value_type: field
+
+  field:
+    fields:
+      - name: name
+        type: string
+      - name: key
+        type: ?string
+      - name: type
+        type: string
+      - name: key_type
+        type: ?string
+      - name: value_type
+        type: ?string
