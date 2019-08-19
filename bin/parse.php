@@ -67,6 +67,15 @@ foreach ($structures as $className => $struct){
         if($baseType === 'primitive') {
 
             $importFunction->addBody('    $this->? = $arrayData[?];', [$variableName, $key]);
+        } elseif($baseType === 'array') {
+
+            $importFunction->addBody('    foreach ($arrayData[?] as $line) {', [$key]);
+            $importFunction->addBody('        $this->?[] = $line;', [$variableName]);
+            $importFunction->addBody('    }', []);
+        } elseif($baseType === 'map') {
+            $importFunction->addBody('    foreach ($arrayData[?] as $key => $line) {', [$key]);
+            $importFunction->addBody('        $this->?[$key] = $line;', [$variableName]);
+            $importFunction->addBody('    }', []);
         }
 
         if(!$optional) {

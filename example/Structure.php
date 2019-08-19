@@ -10,6 +10,9 @@ class Structure
     public function import(array $arrayData)
     {
         if ($arrayData['fields'] !== null) {
+            foreach ($arrayData['fields'] as $line) {
+                $this->propertyfields[] = $line;
+            }
         } else {
             throw new \RuntimeException("Missing the key 'fields'");
         }

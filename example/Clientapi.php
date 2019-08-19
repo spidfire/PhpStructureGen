@@ -26,6 +26,9 @@ class Clientapi
             throw new \RuntimeException("Missing the key 'namespace'");
         }
         if ($arrayData['structures'] !== null) {
+            foreach ($arrayData['structures'] as $key => $line) {
+                $this->propertystructures[$key] = $line;
+            }
         } else {
             throw new \RuntimeException("Missing the key 'structures'");
         }
