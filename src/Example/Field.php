@@ -22,21 +22,24 @@ class Field
     /** @var string */
     private $propertyValueType;
 
+    /**
+     * @param array $arrayData
+     */
     public function import(array $arrayData)
     {
-        if (array_key_exists('name', $arrayData)) {
+        if (\array_key_exists('name', $arrayData)) {
             $this->propertyName = $arrayData['name'];
         }
-        if (array_key_exists('key', $arrayData)) {
+        if (\array_key_exists('key', $arrayData)) {
             $this->propertyKey = $arrayData['key'];
         }
-        if (array_key_exists('type', $arrayData)) {
+        if (\array_key_exists('type', $arrayData)) {
             $this->propertyType = $arrayData['type'];
         }
-        if (array_key_exists('key_type', $arrayData)) {
+        if (\array_key_exists('key_type', $arrayData)) {
             $this->propertyKeyType = $arrayData['key_type'];
         }
-        if (array_key_exists('value_type', $arrayData)) {
+        if (\array_key_exists('value_type', $arrayData)) {
             $this->propertyValueType = $arrayData['value_type'];
         }
     }

@@ -44,7 +44,7 @@ class ArrayField extends AbstractField
     {
         $method = $class->addMethod('get' . $this->name->PascalCase());
         $method->addComment("@return {$this->valueType->PascalCase()}[]");
-        $method->setReturnType($this->type);
+        $method->setReturnType('array');
         $method->setVisibility('public');
         $method->addBody('return $this->?;', [$this->getPropertyName()]);
     }
@@ -59,7 +59,8 @@ class ArrayField extends AbstractField
     public function generateImport(Method $method, string $varName, Settings $settings)
     {
         $stmt = PhpHierarchy::create()
-            ->if("array_key_exists(?, ?)", $this->key, new PhpLiteral($varName));
+            ->if("\array_key_exists(?, ?)", $this->key, new PhpLiteral($varName))
+            ->add('/** @var array $value */');
 
         if(in_array($this->valueType->originalName, FieldFactory::getPrimitiveTypes())){
             $stmt = $stmt->foreach('?[?] as $value',new PhpLiteral($varName), $this->key)

@@ -10,9 +10,13 @@ class Structure
     /** @var Field[] */
     private $propertyFields;
 
+    /**
+     * @param array $arrayData
+     */
     public function import(array $arrayData)
     {
-        if (array_key_exists('fields', $arrayData)) {
+        if (\array_key_exists('fields', $arrayData)) {
+            /** @var array $value */
             foreach ($arrayData['fields'] as $value) {
                 $field = new Field();
                 $field->import($value);

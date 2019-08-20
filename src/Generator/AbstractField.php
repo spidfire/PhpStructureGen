@@ -80,7 +80,7 @@ class AbstractField
     public function generateImport(Method $method, string $varName, Settings $settings)
     {
         $php = PhpHierarchy::create()
-            ->struct('if', "array_key_exists(?, ?)", $this->key, new PhpLiteral($varName))
+            ->struct('if', "\array_key_exists(?, ?)", $this->key, new PhpLiteral($varName))
                 ->add('$this->? = ?[?];', $this->getPropertyName(), new PhpLiteral($varName),  $this->key)
             ->close()
             ->print($settings);

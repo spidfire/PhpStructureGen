@@ -43,11 +43,15 @@ class ClassGenerator
         $param = $importFunction->addParameter(static::IMPORT_VARIABLE);
         $param->setTypeHint('array');
         $importFunction->setVisibility('public');
+        $importFunction->addComment('@param array $'.static::IMPORT_VARIABLE);
         $this->importHolder = $importFunction;
 
     }
 
-    public function addField(AbstractField $field)
+    /**
+     * @param AbstractField $field
+     */
+    public function addField(AbstractField $field): void
     {
         $field->generateGetters($this->classHolder, $this->settings);
         $field->generateProperties($this->classHolder, $this->settings);
@@ -55,6 +59,9 @@ class ClassGenerator
 
     }
 
+    /**
+     * @return string
+     */
     public function export(): string
     {
         $printer = new PsrPrinter;

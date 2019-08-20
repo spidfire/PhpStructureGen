@@ -22,29 +22,35 @@ class Clientapi
     /** @var Structure[] */
     private $propertyStructures;
 
+    /**
+     * @param array $arrayData
+     */
     public function import(array $arrayData)
     {
-        if (array_key_exists('target', $arrayData)) {
+        if (\array_key_exists('target', $arrayData)) {
             $this->propertyTarget = $arrayData['target'];
         }
-        if (array_key_exists('namespace', $arrayData)) {
+        if (\array_key_exists('namespace', $arrayData)) {
             $this->propertyNamespace = $arrayData['namespace'];
         }
-        if (array_key_exists('middleware', $arrayData)) {
+        if (\array_key_exists('middleware', $arrayData)) {
+            /** @var array $value */
             foreach ($arrayData['middleware'] as $value) {
                 $this->propertyMiddleware[] = $value;
             }
         } else {
             throw new \ParseError("Could not find the 'middleware' argument");
         }
-        if (array_key_exists('settings', $arrayData)) {
+        if (\array_key_exists('settings', $arrayData)) {
+            /** @var array $value */
             foreach ($arrayData['settings'] as $key => $value) {
                 $this->propertySettings[$key] = $value;
             }
         } else {
             throw new \ParseError("Could not find the 'settings' argument");
         }
-        if (array_key_exists('structures', $arrayData)) {
+        if (\array_key_exists('structures', $arrayData)) {
+            /** @var array $value */
             foreach ($arrayData['structures'] as $key => $value) {
                 $field = new Structure();
                 $field->import($value);
@@ -82,7 +88,7 @@ class Clientapi
     /**
      * @return String[]
      */
-    public function getSettings(): map
+    public function getSettings(): array
     {
         return $this->propertySettings;
     }
@@ -90,7 +96,7 @@ class Clientapi
     /**
      * @return Structure[]
      */
-    public function getStructures(): map
+    public function getStructures(): array
     {
         return $this->propertyStructures;
     }
